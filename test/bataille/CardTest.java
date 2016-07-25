@@ -81,5 +81,35 @@ public class CardTest {
         assertEquals(expResult, result);
         
     }
-    
+    /**
+     * Test of visible member, of class Card.
+     */
+    @Test
+    public void testVisible() {
+        System.out.println("visible");
+        // Test 1 : at creation time, the card is hidden
+        Card testedCard = new Card(cardColors.HEART, cardValues.ACE);
+        boolean expResult = false;
+        assertEquals (expResult, testedCard.isVisible());
+        // Test 2 : after showing a visible card, it's visible
+        expResult = true;
+        testedCard.show();
+        testedCard.show();
+        assertEquals (expResult, testedCard.isVisible());        
+        // Test 3 : after showing a hidden card, it's visible
+        expResult = true;
+        testedCard.hide();
+        testedCard.show();
+        assertEquals (expResult, testedCard.isVisible());        
+        // Test 4 : after hiding a visible card, it's hidden
+        expResult = false;
+        testedCard.show();
+        testedCard.hide();
+        assertEquals (expResult, testedCard.isVisible());        
+        // Test 5 : after hiding a hidden card, it's hidden
+        expResult = false;
+        testedCard.hide();
+        testedCard.hide();
+        assertEquals (expResult, testedCard.isVisible());        
+    }
 }

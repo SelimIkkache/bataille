@@ -48,8 +48,19 @@ enum cardValues { TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK,
  * Card class represent a card in the game. 
  */
 class Card {
+    /**
+     * theColor gives the color of the card (spade, club, heart or diamond)
+     */
     private final cardColors theColor;
+    /**
+     * theValue gives the color of the card (one from two to ace)
+     */
     private final cardValues theValue;
+    /**
+     * Visible is a boolean that indicates if the card can be seen or is hidden
+     */
+    private boolean visible;
+    
 
     /**
      * Constructor with parameters
@@ -60,6 +71,7 @@ class Card {
                  cardValues cValue) {
           theColor = cColor;
           theValue = cValue;
+          hide(); 
      }
 
     /**
@@ -72,6 +84,27 @@ class Card {
          if (theValue.ordinal() > theOtherCard.theValue.ordinal()) return 1;
          if (theValue == theOtherCard.theValue) return 0;
          return -1;
+     }
+     
+     /**
+      * isVisible lets know if the card is visible or not
+      * @see visible
+      * @return boolean, True if the card is visible, false if hidden
+      */
+     public boolean isVisible() {
+         return visible;
+     }
+     /**
+      * Hide a card
+      */
+     public void hide() {
+         visible = false;
+     }
+     /**
+      * Show a card
+      */
+     public void show() {
+         visible = true;
      }
 }
 public class Bataille {
