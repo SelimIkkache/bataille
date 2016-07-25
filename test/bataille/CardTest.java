@@ -112,4 +112,14 @@ public class CardTest {
         testedCard.hide();
         assertEquals (expResult, testedCard.isVisible());        
     }
+    @Test
+    public void TestgetCardValueAndCardColor (){
+        System.out.println("cardValue and cardColor");
+        cardColors expResultC = cardColors.HEART;
+        cardValues expResult = cardValues.ACE;
+        Card testedCard = new Card(expResultC, expResult);
+        assertEquals (expResult, testedCard.getCardValue());
+        assertEquals (expResultC, testedCard.getCardColor());
+        
+    }
 }
