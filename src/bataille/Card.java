@@ -1,4 +1,5 @@
 package bataille;
+import java.lang.NullPointerException;
 
 /**
  * Card class represent a card in the game. 
@@ -38,13 +39,32 @@ public class Card {
      * @param theOtherCard the card to compare with this object.
      * @return -1 (this card is lesser than the other), 0 (equal) or 1 (bigger)
      */
-     public int compare(Card theOtherCard) {
-         if ( null == theOtherCard ) return 0;
+     public int compare(Card theOtherCard) throws NullPointerException {
+         if ( null == theOtherCard ) 
+             throw new NullPointerException ("Card can't be null") ;
          if (theValue.ordinal() > theOtherCard.theValue.ordinal()) return 1;
          if (theValue == theOtherCard.theValue) return 0;
          return -1;
      }
      
+     /**
+      * Compares if two cards are equal.
+      * @param obj
+      * @return True if the two cards are equal, false in other cases
+      */
+     public boolean equals(Card obj) {
+         if (this == obj) {
+             return true;
+         }
+         if (obj == null) {
+             return false;
+         }
+         if (getClass() != obj.getClass()) {
+             return false;
+         }
+         Card other = (Card) obj;
+         return theColor == other.theColor && theValue == other.theValue;
+     }
      /**
       * isVisible lets know if the card is visible or not
       * @see visible
